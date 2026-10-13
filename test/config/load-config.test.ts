@@ -223,6 +223,12 @@ describe('the archive tier', () => {
   });
 });
 
+describe('the bundled S3', () => {
+  it('speaks plain http only', () => {
+    expect(messageFor({ ...localEnv, S3_ENDPOINT: 'https://seaweedfs:8333' }, 'S3_ENDPOINT')).toMatch(/speaks plain http/);
+  });
+});
+
 describe('rotation policies', () => {
   it('report every problem against ROTATION_POLICIES, one issue each', () => {
     const issues = issuesOf({ ...localEnv, ROTATION_POLICIES: 'events:fortnight:hot=3;logs:day:hot=2,warm=1,archive=9' });

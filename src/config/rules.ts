@@ -1,3 +1,4 @@
+import { BUNDLED_S3_HOST } from './bundled-s3.js';
 import type { EnvKey } from './env-keys.js';
 import type { Fields, TierFields } from './fields.js';
 
@@ -181,6 +182,12 @@ const checkArchive = (fields: Fields, report: Report): void => {
   }
   if (fields.s3SecretAccessKey === undefined) {
     report('S3_SECRET_ACCESS_KEY', required);
+  }
+  if (fields.s3Endpoint !== undefined) {
+    const url = new URL(fields.s3Endpoint);
+    if (url.hostname === BUNDLED_S3_HOST && url.protocol !== 'http:') {
+      report('S3_ENDPOINT', `the bundled ${BUNDLED_S3_HOST} speaks plain http. Use http://${BUNDLED_S3_HOST}:8333.`);
+    }
   }
 };
 
