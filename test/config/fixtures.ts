@@ -30,7 +30,7 @@ export const railwayEnv: Env = {
   TIER_WARM_DRIVER: 'default',
   TIER_ARCHIVE_DRIVER: 's3',
   TIER_ARCHIVE_BUCKET: 'pg-archive',
-  S3_ENDPOINT: 'https://storage.railway.app',
+  S3_ENDPOINT: 'https://bucket.example.com',
   S3_REGION: 'auto',
   S3_ACCESS_KEY_ID: 'AKIAFAKEKEY',
   S3_SECRET_ACCESS_KEY: 'hunter2-s3',
