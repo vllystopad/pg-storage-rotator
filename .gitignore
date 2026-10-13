@@ -3,3 +3,7 @@ dist
 .env
 .env.*
 !.env.example.*
+
+# Files storage:generate writes into the project root; the committed ones live in examples/
+/docker/
+/docker-compose.storage.yml
